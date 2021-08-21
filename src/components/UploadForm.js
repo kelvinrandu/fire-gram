@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import ProgressBar from "./ProgressBar";
+
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -21,17 +22,14 @@ const UploadForm = () => {
     <>
       {" "}
       <form>
-    
-          <Input
-            placeholder="First name"
-            type="file"
-            onChange={changeHandler}
-          />
-          {/* <FormErrorMessage>{error}</FormErrorMessage> */}
-          {error && <div>{error}</div>}
-          {file && <div>{file.name}</div>}
-          {file && <ProgressBar file={file} setFile={setFile} />}
-    
+ 
+
+        <Input placeholder="First name" type="file" onChange={changeHandler} />
+
+        {/* <FormErrorMessage>{error}</FormErrorMessage> */}
+        {error && <div>{error}</div>}
+        {file && <div>{file.name}</div>}
+        {file && <ProgressBar file={file} setFile={setFile} />}
       </form>
     </>
   );

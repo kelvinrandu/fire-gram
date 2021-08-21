@@ -6,6 +6,7 @@ import {
   ModalContent,
   useDisclosure,
 } from "@chakra-ui/react";
+import {motion} from 'framer-motion';
 
 const ImageGrid = () => {
   const { docs } = useFirestore("images");
@@ -22,13 +23,19 @@ const ImageGrid = () => {
     <div className="img-grid">
       {docs &&
         docs.map((doc) => (
-          <div
+          <motion.div
+            layout
+            whileHover={{ opacity:1}}
             onClick={() => handleClick(doc.url)}
             className="img-wrap"
             key={doc.id}
           >
-            <img src={doc.url} alt="uploaded pic" />
-          </div>
+            <motion.img src={doc.url} alt="uploaded pic" 
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{delay:1}}
+            />
+          </ motion.div>
         ))}
       <>
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
